@@ -12,12 +12,15 @@ namespace MonoGame_SpaceInvaders
     /// </summary>
     public class Game1 : Game
     {
-        Texture2D warshipTexture;
-        Vector2 warshipPosition;
-        float warshipMovementSpeed;
-        Enemy.Alien alien = new Enemy.Alien();
+        public Texture2D backgroundImage;
+        public Texture2D warshipTexture;
+        public Vector2 warshipPosition;
+        public float warshipMovementSpeed;
 
+        Enemy.Alien alien = new Enemy.Alien();
         Player.Movement keyBinds = new Player.Movement();
+        Player.Bullet bullet = new Player.Bullet();
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         
@@ -45,7 +48,7 @@ namespace MonoGame_SpaceInvaders
             #endregion
             #region warshipInfo
             warshipPosition = new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight - 30);
-            warshipMovementSpeed = 1000f;
+            warshipMovementSpeed = 750f;
             #endregion
 
             base.Initialize();
@@ -59,10 +62,12 @@ namespace MonoGame_SpaceInvaders
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             // TODO: use this.Content to load your game content here
+            backgroundImage = Content.Load<Texture2D>("background");
             warshipTexture = Content.Load<Texture2D>("warship");
-            alien.texture = Content.Load<Texture2D>("alien");
+            alien.alienTexture = Content.Load<Texture2D>("alien");
+            bullet.bulletTexture = Content.Load<Texture2D>("bullet");
         }
 
         /// <summary>
@@ -91,7 +96,9 @@ namespace MonoGame_SpaceInvaders
 
             #endregion
 
-            alien.UpdatePosition(gameTime);
+            alien.alienPos(ref alien.alienPosition, alien.alienMovementSpeed, gameTime, alien.alienTexture, graphics);
+
+            bullet.BulletMovement(ref bullet.bulletPosition, bullet.bulletMovementSpeed, gameTime, bullet.bulletTexture, graphics);
 
             base.Update(gameTime);
         }
@@ -102,12 +109,12 @@ namespace MonoGame_SpaceInvaders
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            spriteBatch.Draw(backgroundImage, new Vector2(0, 0), Color.White);
             spriteBatch.Draw(warshipTexture, warshipPosition, null, Color.White, 0f, new Vector2(warshipTexture.Width / 2, warshipTexture.Height / 2),Vector2.One,SpriteEffects.None, 0f);
-            spriteBatch.Draw(alien.texture, alien.position, Color.White);
+            spriteBatch.Draw(alien.alienTexture, alien.alienPosition, Color.White);
+            spriteBatch.Draw(bullet.bulletTexture, bullet.bulletPosition, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
