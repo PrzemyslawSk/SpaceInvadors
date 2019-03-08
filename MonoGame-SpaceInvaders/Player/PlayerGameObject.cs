@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MonoGame_SpaceInvaders.Player
 {
-    public class PlayerGameObject : GameObject, IDisposable, Shared.IUpdateable, Shared.IDrawable
+    public class PlayerGameObject : GameObject, IDisposable
     {
         public float Speed { get; protected set; }
         protected GraphicsDeviceManager GraphicsDeviceManager { get; }
@@ -18,14 +18,15 @@ namespace MonoGame_SpaceInvaders.Player
         public PlayerGameObject(Texture2D texture, Vector2 vector, float speed, GraphicsDeviceManager graphics) : base(texture, vector)
         {
             Speed = speed;
+            GraphicsDeviceManager = graphics;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(base.texture, base.vector, null, Color.Wheat, 0f, new Vector2(texture.Width, texture.Height), Vector2.One, SpriteEffects.None, 0f);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             var keyboardState = Keyboard.GetState();
 

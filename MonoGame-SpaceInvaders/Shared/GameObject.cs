@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MonoGame_SpaceInvaders.Shared
 {
-    public abstract class GameObject : IDisposable
+    public abstract class GameObject : IDisposable, IDrawable, IUpdateable
     {
         protected Texture2D texture;
         protected Vector2 vector;
@@ -38,6 +38,15 @@ namespace MonoGame_SpaceInvaders.Shared
         void IDisposable.Dispose()
         {
             Dispose(true);
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            throw new NotImplementedException();// :P
+        }
+        public virtual void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();// :P
         }
         #endregion
     }
