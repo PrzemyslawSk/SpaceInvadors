@@ -13,6 +13,7 @@ namespace MonoGame_SpaceInvaders
     public class Game1 : Game
     {
         public Texture2D backgroundImage;
+
         public Texture2D warshipTexture;
         public Vector2 warshipPosition;
         public float warshipMovementSpeed;
@@ -67,7 +68,7 @@ namespace MonoGame_SpaceInvaders
             backgroundImage = Content.Load<Texture2D>("background");
             warshipTexture = Content.Load<Texture2D>("warship");
             alien.alienTexture = Content.Load<Texture2D>("alien");
-            bullet.bulletTexture = Content.Load<Texture2D>("bullet");
+            //bullet.bulletTexture = Content.Load<Texture2D>("bullet");
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace MonoGame_SpaceInvaders
 
             alien.alienPos(ref alien.alienPosition, alien.alienMovementSpeed, gameTime, alien.alienTexture, graphics);
 
-            bullet.BulletMovement(ref bullet.bulletPosition, bullet.bulletMovementSpeed, gameTime, bullet.bulletTexture, graphics);
+            //bullet.BulletMovement(ref bullet.bulletPosition, bullet.bulletMovementSpeed, gameTime, bullet.bulletTexture, graphics);
 
             base.Update(gameTime);
         }
@@ -114,7 +115,7 @@ namespace MonoGame_SpaceInvaders
             spriteBatch.Draw(backgroundImage, new Vector2(0, 0), Color.White);
             spriteBatch.Draw(warshipTexture, warshipPosition, null, Color.White, 0f, new Vector2(warshipTexture.Width / 2, warshipTexture.Height / 2),Vector2.One,SpriteEffects.None, 0f);
             spriteBatch.Draw(alien.alienTexture, alien.alienPosition, Color.White);
-            spriteBatch.Draw(bullet.bulletTexture, bullet.bulletPosition, Color.White);
+            //spriteBatch.Draw(bullet.bulletTexture, bullet.bulletPosition, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
