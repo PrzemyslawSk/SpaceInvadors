@@ -42,12 +42,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Enemy\Alien.cs" />
+    <Compile Include="Enemy\AlienGameObject.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Player\Bullet.cs" />
-    <Compile Include="Player\Movement.cs" />
+    <Compile Include="Player\PlayerGameObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\GameObject.cs" />
+    <Compile Include="Shared\IDrawable.cs" />
+    <Compile Include="Shared\IUpdateable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
