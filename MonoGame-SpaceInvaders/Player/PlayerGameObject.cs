@@ -23,7 +23,7 @@ namespace MonoGame_SpaceInvaders.Player
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(base.texture, base.vector, null, Color.Wheat, 0f, new Vector2(texture.Width, texture.Height), Vector2.One, SpriteEffects.None, 0f);
+            spriteBatch.Draw(base.texture, base.vector, null, Color.White, 0f, new Vector2(texture.Width, texture.Height), Vector2.One, SpriteEffects.None, 0f);
         }
 
         public override void Update(GameTime gameTime)
@@ -36,8 +36,8 @@ namespace MonoGame_SpaceInvaders.Player
                 base.vector.X += Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             base.vector.X = Math.Min(
-                Math.Max(base.texture.Width / 2, base.vector.X), 
-                GraphicsDeviceManager.PreferredBackBufferWidth - texture.Width / 2
+                Math.Max(base.texture.Width +13 / 2, base.vector.X), 
+                GraphicsDeviceManager.PreferredBackBufferWidth +20 - texture.Width / 2
             );
         }
 

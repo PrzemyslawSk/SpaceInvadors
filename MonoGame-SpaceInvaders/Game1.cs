@@ -66,10 +66,10 @@ namespace MonoGame_SpaceInvaders
             //init game objects
             gameObjects.Add(
                 new PlayerGameObject(
-                warshipTexture,
-                new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight - 30),
-                750f,
-                graphics
+                    warshipTexture,
+                    new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight - 30),
+                    750f,
+                    graphics
                 )
             );
 
